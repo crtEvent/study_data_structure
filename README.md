@@ -63,7 +63,7 @@ Data Structures (자료 구조)
 <details>
 <summary> LinkedList 설명 </summary>
 
-<img src="https://raw.githubusercontent.com/crtEvent/image_repo/main/data_structure_image/LinkedList.png?token=GHSAT0AAAAAAB45DRL3I6TP3WEZOSWYLYMKY52X62A" width="600" height="100"><br>
+<img width="90%" src="https://user-images.githubusercontent.com/86359180/211203452-d13e5b25-e2d4-4f6c-9b15-4904eba38e36.png"><br>
 - 불연속적으로 존재하는 데이터를 서로 연결(link)한 형태
 - LinkedList의 각 요소(node)들은 자신과 연결된 다음 요소에 대한 참조(주소값)와 데이터로 구성
 - 장점) 데이터 추가/삭제 과정에서 ArrayList처럼 배열을 복사하는 과정이 없어 처리속도가 빠르다
@@ -72,14 +72,14 @@ Data Structures (자료 구조)
 
 ## LinkedList 데이터 삭제
 - 삭제하고자 하는 요소의 이전요소 -> 삭제하고자 하는 요소의 다음 요소를 참조
-<br><img src="https://raw.githubusercontent.com/crtEvent/image_repo/main/data_structure_image/LinkedList%20delete.png?token=GHSAT0AAAAAAB45DRL3MBNLYD7EJKAWJMJUY52X7HA" width="500" height="300"><br>
+<br><img width="80%" src="https://user-images.githubusercontent.com/86359180/211203446-3f430d81-fc29-47a6-a22d-441a292287c3.png"/><br>
 
 ## LinkedList 데이터 추가
 - 새로운 요소를 생성
 - 추가하고자 하는 위치 이전 요소의 참조 -> 새로운 요소에 대한 참조로 변경
 - 새로운 요소가 그 다음 요소를 참조하도록 변경
 - -> ArrayList처럼 배열을 복사하는 과정이 없어 처리속도가 빠르다
-<br><img src="https://raw.githubusercontent.com/crtEvent/image_repo/main/data_structure_image/LinkedList%20insert.png?token=GHSAT0AAAAAAB45DRL2VAUWL3DJOUP243L4Y52X4AA" width="500" height="260"><br>
+<br><img width="80%" src="https://user-images.githubusercontent.com/86359180/211203450-43d382d4-3179-4127-a3bb-ca387465bade.png"/><br>
 
 ## Big-O
 |연산|        Big-O        |
