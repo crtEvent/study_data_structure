@@ -2,7 +2,7 @@ package ds.linear.linkedlist;
 
 public class MyLinkedList {
     private Node head;
-    private int size = 0;
+    private int listSize = 0;
 
     private class Node {
         private Object data;
@@ -20,7 +20,6 @@ public class MyLinkedList {
      * @return 지정된 위치에 있는 요소
      */
     public Object get(int index) {
-
         return null;
     }
 
@@ -64,7 +63,19 @@ public class MyLinkedList {
      * @param data 추가할 요소
      */
     public void addLast(Object data) {
+        Node newNode = new Node(data);
 
+        if(head == null) { // head가 null인 경우 head가 새 노드를 참조
+            this.head = newNode;
+        } else {
+            // 마지막 node를 찾는다
+            Node tempNode = head;
+            while(tempNode.next != null) {
+                tempNode = tempNode.next;  // 다음 노드를 참조
+            }
+            tempNode.next = newNode; // 마지막 노드의 next에 삽입
+        }
+        listSize++;
     }
 
     /**
@@ -110,6 +121,29 @@ public class MyLinkedList {
         return false;
     }
 
+    /**
+     * list의 모든 요소들을 문자열로 반환
+     * 각 요소는 대괄호([])안에 표시된다
+     * 각 요소는 String.valueOf(Object)에 의해 문자열로 변환된다
+     * @return list의 모든 요소들을 표현한 문자열
+     */
+    public String toString() {
+        if(head == null){
+            return "[]";
+        }
 
+        Node tempNode = head;
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+
+        while(tempNode.next != null) {
+            sb.append(tempNode.data + ", ");
+            tempNode = tempNode.next;
+        }
+        sb.append(tempNode.data);
+        sb.append("]");
+
+        return sb.toString();
+    }
 
 }

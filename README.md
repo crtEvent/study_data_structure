@@ -93,4 +93,117 @@ Data Structures (자료 구조)
 <details>
 <summary> LinkedList 코드 </summary>
 
+## 1. MyLinkedList Class & Node Class
+```java
+public class MyLinkedList {
+    private Node head;
+    private int listSize = 0;
+
+    private class Node {
+        private Object data;
+        private Node next;
+
+        Node(Object data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+    // ...생략
+}
+```
+### 1. Node는 MyLinkedList Class 내에 내부 클래스(Inner Class)로 생성
+   - 내부 클래스로 생성한 이유
+     - 두 클래스(Node와 MyLinkedList)가 서로 긴밀한 관계에 있음<br>
+       -> 내부 클래스로 접근하기 쉽게 하기 위함
+     - 외부에는 불필요한 클래스(Node)를 감출 수 있음<br>
+       -> 코드 복잡성 ↓
+
+## 2. toString() : list의 모든 요소들을 문자열로 반환
+- test를 위해 가정 먼저 구현
+```java
+    /**
+     * list의 모든 요소들을 문자열로 반환
+     * 각 요소는 대괄호([])안에 표시된다
+     * 각 요소는 String.valueOf(Object)에 의해 문자열로 변환된다
+     * @return list의 모든 요소들을 표현한 문자열
+     */
+    public String toString() {
+        if(head == null){
+            return "[]";
+        }
+
+        Node tempNode = head;
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+
+        while(tempNode.next != null) {
+            sb.append(tempNode.data + ", ");
+            tempNode = tempNode.next;
+        }
+        sb.append(tempNode.data);
+        sb.append("]");
+
+        return sb.toString();
+    }
+```
+#### 1. head가 비어있으면 "[]" 반환
+#### 2. while문으로 head부터 마지막 Node까지 순회
+- head부터 마지막 Node까지 순회하는  로직
+ ```java
+Node tempNode = head;
+
+while(tempNode.next != null) {
+    tempNode = tempNode.next;
+}
+```
+- tempNode.next == null이면 마지막 Node이다
+#### 3. 순회하면서 요소를 StringBuilder에 추가
+
+## 3. void addLast(Object data): List의 끝 부분에 지정된 요소 추가
+```java
+    /**
+     * List의 끝 부분에 지정된 요소 추가
+     * @param data 추가할 요소
+     */
+    public void addLast(Object data) {
+        Node newNode = new Node(data);
+
+        if(head == null) { // head가 null인 경우 head가 새 노드를 참조
+            this.head = newNode;
+        } else {
+            // 마지막 node를 찾는다
+            Node tempNode = head;
+            while(tempNode.next != null) {
+                tempNode = tempNode.next;  // 다음 노드를 참조
+            }
+            tempNode.next = newNode; // 마지막 노드의 next에 삽입
+        }
+        listSize++;
+    }
+```
+#### 1. 추가할 요소로 새로운 Node 생성
+```java
+Node newNode = new Node(data);
+```
+#### 2. head가 null인 경우(=list가 비어있다) head가 새 노드를 참조
+```java
+if(head == null) { // head가 null인 경우 head가 새 노드를 참조
+    this.head = newNode;
+}
+```
+#### 3. 그 외의 경우 마지막 Node를 찾아 next에 새로운 Node 삽입
+```java
+} else {
+    // 마지막 node를 찾는다
+    Node tempNode = head;
+    while(tempNode.next != null) {
+        tempNode = tempNode.next;  // 다음 노드를 참조
+    }
+    tempNode.next = newNode; // 마지막 노드의 next에 삽입
+}
+```
+#### 4. list의 size를 늘려준다
+```java
+listSize++;
+```
 </details>
