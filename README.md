@@ -118,7 +118,7 @@ public class MyLinkedList {
      - 외부에는 불필요한 클래스(Node)를 감출 수 있음<br>
        -> 코드 복잡성 ↓
 
-## :radio_button: toString() : list의 모든 요소들을 문자열로 반환
+## :full_moon: toString() : list의 모든 요소들을 문자열로 반환
 - test를 위해 가정 먼저 구현
 ```java
     /**
@@ -159,7 +159,7 @@ while(tempNode.next != null) {
 - tempNode.next == null이면 마지막 Node이다
 **3. 순회하면서 요소를 StringBuilder에 추가**
 
-## :radio_button: void addLast(Object data): List의 끝 부분에 지정된 요소 추가
+## :full_moon: void addLast(Object data): List의 끝 부분에 지정된 요소 추가
 ```java
     /**
      * List의 끝 부분에 지정된 요소 추가
@@ -207,7 +207,7 @@ if(head == null) { // head가 null인 경우 head가 새 노드를 참조
 listSize++;
 ```
 
-## :radio_button: void addFirst(): List의 시작 부분에 지정된 요소 추가.
+## :full_moon: void addFirst(): List의 시작 부분에 지정된 요소 추가.
 ```java
     /**
      * List의 시작 부분에 지정된 요소 추가.
@@ -225,7 +225,7 @@ listSize++;
 **3. 헤드를 새 노드로 지정 = 새 노드를 첫 번째 순서로 한다**<br>
 **4. list의 size를 늘려준다**<br>
 
-## :radio_button: void add(int index, Object data): List의 지정된 위치에 지정된 요소 추가
+## :full_moon: void add(int index, Object data): List의 지정된 위치에 지정된 요소 추가
 ```java
     /**
      * List의 지정된 위치에 지정된 요소 추가
@@ -286,7 +286,7 @@ listSize++;
 **5. 추가할 위치의 이전 Node.next는 새로운 Node**<br>
 **6. list의 size를 늘려준다**<br>
 
-## :radio_button: Object removeFirst(): List의 첫 번째 요소를 제거 후 반환
+## :full_moon: Object removeFirst(): List의 첫 번째 요소를 제거 후 반환
 ```java
     /**
      * List의 첫 번째 요소를 제거 후 반환
@@ -317,7 +317,7 @@ listSize++;
 **6. tempNode에 저장헀던 head(삭제될 Node)의 data를 반환**<br>
 - :question:궁금증) tempNode값을 그대로 놔두면 메서드가 종료될 때 실제 저장공간에서 내려갈까? 그대로 남아 있을까?
 
-## :radio_button: Object removeLast(): List의 마지막 요소를 제거 후 반환
+## :full_moon: Object removeLast(): List의 마지막 요소를 제거 후 반환
 ```java
     /**
      * List의 마지막 요소를 제거 후 반환
@@ -376,7 +376,7 @@ return nodeToBeDeleted.data;
 **4. listSize 감소**<br>
 **5. 제거된 Node(=마지막 Node였던 것)의 data를 반환**<br>
 
-## :radio_button: Object remove(int index): List에서 지정된 위치에 있는 요소를 제거 후 반환
+## :full_moon: Object remove(int index): List에서 지정된 위치에 있는 요소를 제거 후 반환
 ```java
     /**
      * List에서 지정된 위치에 있는 요소를 제거 후 반환
