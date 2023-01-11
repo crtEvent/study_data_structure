@@ -135,19 +135,50 @@ public class MyLinkedList {
 
     /**
      * List의 마지막 요소를 제거 후 반환
+     * 제거할 요소가 없으면 null을 반환
      * @return 제거된 list의 마지막 요소
      */
     public Object removeLast() {
-        return null;
+        if(listSize == 0) {
+            return null;
+        }
+
+        if(listSize == 1) {
+            Node nodeToBeDeleted = get(0);
+            head = null;
+            listSize--;
+            return nodeToBeDeleted.data;
+        }
+
+        Node tempNode = get(listSize-2);
+        Node nodeToBeDeleted = tempNode.next;
+        tempNode.next = null;
+        listSize--;
+
+        return nodeToBeDeleted.data;
     }
 
     /**
      * List에서 지정된 위치에 있는 요소를 제거 후 반환
+     * 제거할 요소가 없으면 null을 반환
      * @param index 제거할 요소의 위치
      * @return 제거된 요소
      */
     public Object remove(int index) {
-        return null;
+        if(index <= 0) {
+            return removeFirst();
+        }
+
+        if(index >= listSize) {
+            return removeLast();
+        }
+
+        Node tempNode = get(index-1);
+        Node nodeToBeDeleted = tempNode.next;
+        tempNode.next = tempNode.next.next;
+        listSize--;
+
+        return nodeToBeDeleted.data;
     }
 
     /**

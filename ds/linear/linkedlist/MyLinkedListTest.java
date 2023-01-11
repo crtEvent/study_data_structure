@@ -103,4 +103,88 @@ public class MyLinkedListTest {
 
     }
 
+    @Test
+    public void testRemoveLast() {
+        list = new MyLinkedList();
+        list.addLast(new Integer(1));
+        list.addLast(new Integer(2));
+        list.addLast(new Integer(3));
+        list.addLast(new Integer(4));
+        System.out.println("test 전: "+list.toString());
+        Assertions.assertEquals("[1, 2, 3, 4]", list.toString());
+
+        int removedValue = (int) list.removeLast();
+        System.out.println("제거된 Node의 date: "+removedValue);
+        System.out.println("removeLast() 후: "+list.toString());
+        Assertions.assertEquals(4, removedValue);
+        Assertions.assertEquals("[1, 2, 3]", list.toString());
+
+        removedValue = (int) list.removeLast();
+        System.out.println("제거된 Node의 date: "+removedValue);
+        System.out.println("removeLast() 후: "+list.toString());
+        Assertions.assertEquals(3, removedValue);
+        Assertions.assertEquals("[1, 2]", list.toString());
+
+        // 만약 남은 Node가 0인데 계속 제거한다면?
+        list.removeLast();
+        removedValue = (int) list.removeLast();
+        System.out.println("제거된 Node의 date: "+removedValue);
+        System.out.println("removeLast() 후: "+list.toString());
+        Assertions.assertEquals(1, removedValue);
+        Assertions.assertEquals("[]", list.toString());
+        list.removeLast();
+        list.removeLast();
+        System.out.println("모든 node 제거 후: "+list.toString());
+        Assertions.assertEquals("[]", list.toString());
+
+    }
+
+    @Test
+    public void testRemove() {
+        list = new MyLinkedList();
+        list.addLast(new Integer(1));
+        list.addLast(new Integer(2));
+        list.addLast(new Integer(3));
+        list.addLast(new Integer(4));
+        list.addLast(new Integer(5));
+        System.out.println("test 전: "+list.toString());
+        Assertions.assertEquals("[1, 2, 3, 4, 5]", list.toString());
+
+        int removedValue = (int) list.remove(1);
+        System.out.println("제거된 Node의 date: "+removedValue);
+        System.out.println("removeLast() 후: "+list.toString());
+        Assertions.assertEquals(2, removedValue);
+        Assertions.assertEquals("[1, 3, 4, 5]", list.toString());
+
+        removedValue = (int) list.remove(2);
+        System.out.println("제거된 Node의 date: "+removedValue);
+        System.out.println("removeLast() 후: "+list.toString());
+        Assertions.assertEquals(4, removedValue);
+        Assertions.assertEquals("[1, 3, 5]", list.toString());
+
+        // 만약 index로 음수 값이나 list 크기보다 큰 값이 들어온다면?
+        removedValue = (int) list.remove(-2);
+        System.out.println("제거된 Node의 date: "+removedValue);
+        System.out.println("removeLast() 후: "+list.toString());
+        Assertions.assertEquals(1, removedValue);
+        Assertions.assertEquals("[3, 5]", list.toString());
+
+        // 만약 index로 음수 값이나 list 크기보다 큰 값이 들어온다면?
+        removedValue = (int) list.remove(99);
+        System.out.println("제거된 Node의 date: "+removedValue);
+        System.out.println("removeLast() 후: "+list.toString());
+        Assertions.assertEquals(5, removedValue);
+        Assertions.assertEquals("[3]", list.toString());
+
+        // 만약 남은 Node가 0인데 계속 제거한다면?
+        list.remove(0);
+        list.remove(0);
+        list.remove(0);
+        list.remove(0);
+        list.remove(0);
+        System.out.println("모든 node 제거 후: "+list.toString());
+        Assertions.assertEquals("[]", list.toString());
+
+    }
+
 }

@@ -308,4 +308,80 @@ if(index > listSize) {
 **6. tempNode에 저장헀던 head(삭제될 Node)의 data를 반환**<br>
 - 궁금증) tempNode값을 그대로 놔두면 메서드가 종료될 때 실제 저장공간에서 내려갈까? 그대로 남아 있을까?
 
+## Object removeLast(): List의 마지막 요소를 제거 후 반환
+```java
+    /**
+     * List의 마지막 요소를 제거 후 반환
+     * 제거할 요소가 없으면 null을 반환
+     * @return 제거된 list의 마지막 요소
+     */
+    public Object removeLast() {
+        if(listSize == 0) {
+            return null;
+        }
+
+        if(listSize == 1) {
+            Node nodeToBeDeleted = get(0);
+            head = null;
+            listSize--;
+            return nodeToBeDeleted.data;
+        }
+
+        Node tempNode = get(listSize-2);
+        Node nodeToBeDeleted = tempNode.next;
+        tempNode.next = null;
+        listSize--;
+
+        return nodeToBeDeleted.data;
+    }
+```
+### [list의 크기가 0 또는 1일 경우]
+**1. list의 크기가 0이면 null 반환**<br>
+**2. list의 크기가 1이면 바로 첫 번째 Node의 data 반환**<br>
+<br>
+
+### [list의 마지막 요소 반환 로직]
+**1. tempNode에 뒤에서 두 번째 Node를 저장**<br>
+**2. 삭제될 Node는 tempNode의 next(= 마지막 Node)**<br>
+**3. tempNode의 next를 null로 바꾼다(= 마지막 Node를 버린다)**<br>
+**4. listSize 감소**<br>
+**5. 제거된 Node(=마지막 Node였던 것)의 data를 반환**<br>
+
+## Object remove(int index): List에서 지정된 위치에 있는 요소를 제거 후 반환
+```java
+    /**
+     * List에서 지정된 위치에 있는 요소를 제거 후 반환
+     * 제거할 요소가 없으면 null을 반환
+     * @param index 제거할 요소의 위치
+     * @return 제거된 요소
+     */
+    public Object remove(int index) {
+        if(index <= 0) {
+            return removeFirst();
+        }
+
+        if(index >= listSize) {
+            return removeLast();
+        }
+
+        Node tempNode = get(index-1);
+        Node nodeToBeDeleted = tempNode.next;
+        tempNode.next = tempNode.next.next;
+        listSize--;
+
+        return nodeToBeDeleted.data;
+    }
+```
+### [index 입력값 검증]
+**1. index가 0보다 작거나 같으면 removeFirst()**<br>
+**2. index가 list의 크기보다 크거나 같으면 removeLast()**<br>
+<br>
+
+### [원하는 위치의 요소를 제거하는 로직]
+**1. tempNode에 저거할 요소 이전의 Node를 저장**<br>
+**2. 삭제될 노드는 tempNode의 next**<br>
+**3. tempNode의 next에 tempNode의 다다음 Node를 저장(= tempNode의 다음 Node를 버린다)**<br>
+**4. listSize 감소**<br>
+**5. 삭제된 Node의 data 반환**<br>
+
 </details>
