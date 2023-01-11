@@ -55,7 +55,10 @@ public class MyLinkedList {
      * @param data 추가할 요소
      */
     public void addFirst(Object data) {
-
+        Node newNode = new Node(data);
+        newNode.next = head;
+        head = newNode;
+        listSize++;
     }
 
     /**
