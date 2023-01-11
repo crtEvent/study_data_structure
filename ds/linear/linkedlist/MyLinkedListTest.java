@@ -41,4 +41,35 @@ public class MyLinkedListTest {
         Assertions.assertEquals("[4, 3, 2, 1]", list.toString());
     }
 
+    @Test
+    public void testAdd() {
+        list = new MyLinkedList();
+        System.out.println(list.toString());
+        Assertions.assertEquals("[]", list.toString());
+
+        list.add(0, new Integer(1));
+        System.out.println(list.toString());
+        Assertions.assertEquals("[1]", list.toString());
+
+        list.add(0, new Integer(2)); // [2, 1]
+        list.add(1, new Integer(3)); // [2, 3, 1]
+        list.add(2, new Integer(4)); // [2, 3, 4, 1]
+        list.add(3, new Integer(5)); // [2, 3, 4, 5, 1]
+        System.out.println(list.toString());
+        Assertions.assertEquals("[2, 3, 4, 5, 1]", list.toString());
+
+        // 만약 index로 음수 값이나 list 크기보다 큰 값이 들어온다면?
+        list.add(-3, new Integer(6));
+        System.out.println(list.toString());
+        Assertions.assertEquals("[6, 2, 3, 4, 5, 1]", list.toString());
+
+        list.add(6, new Integer(7));
+        System.out.println(list.toString());
+        Assertions.assertEquals("[6, 2, 3, 4, 5, 1, 7]", list.toString());
+
+        list.add(150, new Integer(8));
+        System.out.println(list.toString());
+        Assertions.assertEquals("[6, 2, 3, 4, 5, 1, 7, 8]", list.toString());
+    }
+
 }

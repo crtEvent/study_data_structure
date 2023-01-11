@@ -225,4 +225,42 @@ listSize++;
 **3. 헤드를 새 노드로 지정 = 새 노드를 첫 번째 순서로 한다**
 **4. list의 size를 늘려준다**
 
+## void add(int index, Object data): List의 지정된 위치에 지정된 요소 추가
+```java
+    /**
+     * List의 지정된 위치에 지정된 요소 추가
+     * @param index 추가할 요소의 위치
+     * @param data 추가할 요소
+     */
+    public void add(int index, Object data) {
+        if(index <= 0) {
+            addFirst(data);
+            return;
+        }
+
+        if(index > listSize) {
+            addLast(data);
+            return;
+        }
+
+        Node previousTempNode = get(index-1);
+        Node tempNode = get(index);
+        Node newNode = new Node(data);
+
+        newNode.next = tempNode;
+        previousTempNode.next = newNode;
+        listSize++;
+    }
+```
+**[index 입력값 검증]**<br>
+**1. index가 0보다 작으면 list의 첫 번째에 추가한다**<br>
+**2. index가 listSize보다 크면 list의 맨 마지막에 추가한다**<br>
+<br>
+**[원하는 위치에 추가하는 로직]**<br>
+**1. 추가할 위치의 이전 Node를 불러온다**<br>
+**2. 추가할 위치에 있는 Node를 불러온다**<br>
+**3. 새로운 Node 생성(= 새로 추가할 Node)**<br>
+**4. 새로운 Node의 next는 원해 추가할 위치의 Node**<br>
+**5. 추가할 위치의 이전 Node.next는 새로운 Node**<br>
+**6. list의 size를 늘려준다**<br>
 </details>

@@ -19,8 +19,16 @@ public class MyLinkedList {
      * @param index 반환할 요소의 위치
      * @return 지정된 위치에 있는 요소
      */
-    public Object get(int index) {
-        return null;
+    public Node get(int index) {
+        if(index > listSize) {
+            return null;
+        }
+
+        Node tempNode = head;
+        for(int i = 0; i < index; i++) {
+            tempNode = tempNode.next;
+        }
+        return tempNode;
     }
 
     /**
@@ -87,7 +95,23 @@ public class MyLinkedList {
      * @param data 추가할 요소
      */
     public void add(int index, Object data) {
+        if(index <= 0) {
+            addFirst(data);
+            return;
+        }
 
+        if(index > listSize) {
+            addLast(data);
+            return;
+        }
+
+        Node previousTempNode = get(index-1);
+        Node tempNode = get(index);
+        Node newNode = new Node(data);
+
+        newNode.next = tempNode;
+        previousTempNode.next = newNode;
+        listSize++;
     }
 
     /**
