@@ -118,7 +118,7 @@ public class MyLinkedList {
      - 외부에는 불필요한 클래스(Node)를 감출 수 있음<br>
        -> 코드 복잡성 ↓
 
-## 2. toString() : list의 모든 요소들을 문자열로 반환
+## toString() : list의 모든 요소들을 문자열로 반환
 - test를 위해 가정 먼저 구현
 ```java
     /**
@@ -146,8 +146,8 @@ public class MyLinkedList {
         return sb.toString();
     }
 ```
-#### 1. head가 비어있으면 "[]" 반환
-#### 2. while문으로 head부터 마지막 Node까지 순회
+**1. head가 비어있으면 "[]" 반환**
+**2. while문으로 head부터 마지막 Node까지 순회**
 - head부터 마지막 Node까지 순회하는  로직
  ```java
 Node tempNode = head;
@@ -157,9 +157,9 @@ while(tempNode.next != null) {
 }
 ```
 - tempNode.next == null이면 마지막 Node이다
-#### 3. 순회하면서 요소를 StringBuilder에 추가
+**3. 순회하면서 요소를 StringBuilder에 추가**
 
-## 3. void addLast(Object data): List의 끝 부분에 지정된 요소 추가
+## void addLast(Object data): List의 끝 부분에 지정된 요소 추가
 ```java
     /**
      * List의 끝 부분에 지정된 요소 추가
@@ -181,17 +181,17 @@ while(tempNode.next != null) {
         listSize++;
     }
 ```
-#### 1. 추가할 요소로 새로운 Node 생성
+**1. 추가할 요소로 새로운 Node 생성**
 ```java
 Node newNode = new Node(data);
 ```
-#### 2. head가 null인 경우(=list가 비어있다) head가 새 노드를 참조
+**2. head가 null인 경우(=list가 비어있다) head가 새 노드를 참조**
 ```java
 if(head == null) { // head가 null인 경우 head가 새 노드를 참조
     this.head = newNode;
 }
 ```
-#### 3. 그 외의 경우 마지막 Node를 찾아 next에 새로운 Node 삽입
+**3. 그 외의 경우 마지막 Node를 찾아 next에 새로운 Node 삽입**
 ```java
 } else {
     // 마지막 node를 찾는다
@@ -202,8 +202,27 @@ if(head == null) { // head가 null인 경우 head가 새 노드를 참조
     tempNode.next = newNode; // 마지막 노드의 next에 삽입
 }
 ```
-#### 4. list의 size를 늘려준다
+**4. list의 size를 늘려준다**
 ```java
 listSize++;
 ```
+
+## void addFirst(): List의 시작 부분에 지정된 요소 추가.
+```java
+    /**
+     * List의 시작 부분에 지정된 요소 추가.
+     * @param data 추가할 요소
+     */
+    public void addFirst(Object data) {
+        Node newNode = new Node(data);
+        newNode.next = head;
+        head = newNode;
+        listSize++;
+    }
+```
+**1. 새로운 노드 생성**
+**2. 새로운 노드의 다음을 head로 지정 = 현재 헤드 노드가 두 번째 순서가 되는 과정**
+**3. 헤드를 새 노드로 지정 = 새 노드를 첫 번째 순서로 한다**
+**4. list의 size를 늘려준다**
+
 </details>
