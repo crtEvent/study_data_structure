@@ -15,9 +15,9 @@ public class MyLinkedList {
     }
 
     /**
-     * List에서 지정된 위치에 있는 요소를 반환
+     * List에서 지정된 위치에 있는 Node를 반환
      * @param index 반환할 요소의 위치
-     * @return 지정된 위치에 있는 요소
+     * @return 지정된 위치에 있는 Node
      */
     public Node get(int index) {
         if(index > listSize) {
@@ -115,15 +115,26 @@ public class MyLinkedList {
     }
 
     /**
-     * List의 첫 번째 요소 제거
+     * List의 첫 번째 요소를 제거 후 반환
+     * 제거할 요소가 없으면 null을 반환
      * @return 제거된 list의 첫 번째 요소
      */
     public Object removeFirst() {
-        return null;
+        if(listSize == 0) {
+            return null;
+        }
+
+        Node tempNode = head;
+        Node nodeToBeFirst = head.next;
+
+        head = nodeToBeFirst;
+        listSize--;
+
+        return tempNode.data;
     }
 
     /**
-     * List의 마지막 요소 제거
+     * List의 마지막 요소를 제거 후 반환
      * @return 제거된 list의 마지막 요소
      */
     public Object removeLast() {
@@ -131,7 +142,7 @@ public class MyLinkedList {
     }
 
     /**
-     * List에서 지정된 위치에 있는 요소 제거
+     * List에서 지정된 위치에 있는 요소를 제거 후 반환
      * @param index 제거할 요소의 위치
      * @return 제거된 요소
      */

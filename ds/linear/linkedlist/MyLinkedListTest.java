@@ -72,4 +72,35 @@ public class MyLinkedListTest {
         Assertions.assertEquals("[6, 2, 3, 4, 5, 1, 7, 8]", list.toString());
     }
 
+    @Test
+    public void testRemoveFirst() {
+        list = new MyLinkedList();
+        list.addLast(new Integer(1));
+        list.addLast(new Integer(2));
+        list.addLast(new Integer(3));
+        list.addLast(new Integer(4));
+        System.out.println("test 전: "+list.toString());
+        Assertions.assertEquals("[1, 2, 3, 4]", list.toString());
+
+        int removedValue = (int) list.removeFirst();
+        System.out.println("제거된 Node의 date: "+removedValue);
+        System.out.println("removeFirst() 후: "+list.toString());
+        Assertions.assertEquals(1, removedValue);
+        Assertions.assertEquals("[2, 3, 4]", list.toString());
+
+        removedValue = (int) list.removeFirst();
+        System.out.println("제거된 Node의 date: "+removedValue);
+        System.out.println("removeFirst() 후: "+list.toString());
+        Assertions.assertEquals(2, removedValue);
+        Assertions.assertEquals("[3, 4]", list.toString());
+
+        // 만약 남은 Node가 0인데 계속 제거한다면?
+        list.removeFirst();
+        list.removeFirst();
+        list.removeFirst();
+        System.out.println("모든 node 제거 후: "+list.toString());
+        Assertions.assertEquals("[]", list.toString());
+
+    }
+
 }

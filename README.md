@@ -181,17 +181,17 @@ while(tempNode.next != null) {
         listSize++;
     }
 ```
-**1. 추가할 요소로 새로운 Node 생성**
+**1. 추가할 요소로 새로운 Node 생성**<br>
 ```java
 Node newNode = new Node(data);
 ```
-**2. head가 null인 경우(=list가 비어있다) head가 새 노드를 참조**
+**2. head가 null인 경우(=list가 비어있다) head가 새 노드를 참조**<br>
 ```java
 if(head == null) { // head가 null인 경우 head가 새 노드를 참조
     this.head = newNode;
 }
 ```
-**3. 그 외의 경우 마지막 Node를 찾아 next에 새로운 Node 삽입**
+**3. 그 외의 경우 마지막 Node를 찾아 next에 새로운 Node 삽입**<br>
 ```java
 } else {
     // 마지막 node를 찾는다
@@ -202,7 +202,7 @@ if(head == null) { // head가 null인 경우 head가 새 노드를 참조
     tempNode.next = newNode; // 마지막 노드의 next에 삽입
 }
 ```
-**4. list의 size를 늘려준다**
+**4. list의 size를 늘려준다**<br>
 ```java
 listSize++;
 ```
@@ -220,10 +220,10 @@ listSize++;
         listSize++;
     }
 ```
-**1. 새로운 노드 생성**
-**2. 새로운 노드의 다음을 head로 지정 = 현재 헤드 노드가 두 번째 순서가 되는 과정**
-**3. 헤드를 새 노드로 지정 = 새 노드를 첫 번째 순서로 한다**
-**4. list의 size를 늘려준다**
+**1. 새로운 노드 생성**<br>
+**2. 새로운 노드의 다음을 head로 지정 = 현재 헤드 노드가 두 번째 순서가 되는 과정**<br>
+**3. 헤드를 새 노드로 지정 = 새 노드를 첫 번째 순서로 한다**<br>
+**4. list의 size를 늘려준다**<br>
 
 ## void add(int index, Object data): List의 지정된 위치에 지정된 요소 추가
 ```java
@@ -252,15 +252,60 @@ listSize++;
         listSize++;
     }
 ```
-**[index 입력값 검증]**<br>
+### [index 입력값 검증]
 **1. index가 0보다 작으면 list의 첫 번째에 추가한다**<br>
+```java
+if(index <= 0) {
+    addFirst(data);
+    return;
+}
+```
 **2. index가 listSize보다 크면 list의 맨 마지막에 추가한다**<br>
+```java
+if(index > listSize) {
+    addLast(data);
+    return;
+}
+```
 <br>
-**[원하는 위치에 추가하는 로직]**<br>
+
+### [새로운 노드를 원하는 위치에 추가하는 로직]
 **1. 추가할 위치의 이전 Node를 불러온다**<br>
 **2. 추가할 위치에 있는 Node를 불러온다**<br>
 **3. 새로운 Node 생성(= 새로 추가할 Node)**<br>
 **4. 새로운 Node의 next는 원해 추가할 위치의 Node**<br>
 **5. 추가할 위치의 이전 Node.next는 새로운 Node**<br>
 **6. list의 size를 늘려준다**<br>
+
+## Object removeFirst(): List의 첫 번째 요소를 제거 후 반환
+```java
+    /**
+     * List의 첫 번째 요소를 제거 후 반환
+     * 제거할 요소가 없으면 null을 반환
+     * @return 제거된 list의 첫 번째 요소
+     */
+    public Object removeFirst() {
+        if(listSize == 0) {
+            return null;
+        }
+
+        Node tempNode = head;
+        Node nodeToBeFirst = head.next;
+
+        head = nodeToBeFirst;
+        listSize--;
+
+        return tempNode.data;
+    }
+```
+**1. 이미 list가 비어 있다면 null을 반환**<br>
+**2. head를 tempNode에 저장**<br>
+**3. head.next를 저장**<br>
+&nbsp;&nbsp;&nbsp;&nbsp;- 첫 번째 Node가 제거 된다면 head.next가 첫 번째 Node가 될 것이다<br>
+**4. head에 3번에서 저장했던 head.next를 저장**<br>
+&nbsp;&nbsp;&nbsp;&nbsp;- head.next를 첫 번째 Node로 지정함
+**5. list의 size를 늘려준다**<br>
+**6. tempNode에 저장헀던 head(삭제될 Node)의 data를 반환**<br>
+- 궁금증) tempNode값을 그대로 놔두면 메서드가 종료될 때 실제 저장공간에서 내려갈까? 그대로 남아 있을까?
+
 </details>
