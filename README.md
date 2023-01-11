@@ -93,7 +93,7 @@ Data Structures (자료 구조)
 <details>
 <summary> LinkedList 코드 </summary>
 
-## 1. MyLinkedList Class & Node Class
+# :large_orange_diamond: 1. MyLinkedList Class & Node Class
 ```java
 public class MyLinkedList {
     private Node head;
@@ -118,7 +118,7 @@ public class MyLinkedList {
      - 외부에는 불필요한 클래스(Node)를 감출 수 있음<br>
        -> 코드 복잡성 ↓
 
-## toString() : list의 모든 요소들을 문자열로 반환
+## :large_blue_circle: toString() : list의 모든 요소들을 문자열로 반환
 - test를 위해 가정 먼저 구현
 ```java
     /**
@@ -159,7 +159,7 @@ while(tempNode.next != null) {
 - tempNode.next == null이면 마지막 Node이다
 **3. 순회하면서 요소를 StringBuilder에 추가**
 
-## void addLast(Object data): List의 끝 부분에 지정된 요소 추가
+## :large_blue_circle: void addLast(Object data): List의 끝 부분에 지정된 요소 추가
 ```java
     /**
      * List의 끝 부분에 지정된 요소 추가
@@ -207,7 +207,7 @@ if(head == null) { // head가 null인 경우 head가 새 노드를 참조
 listSize++;
 ```
 
-## void addFirst(): List의 시작 부분에 지정된 요소 추가.
+## :large_blue_circle: void addFirst(): List의 시작 부분에 지정된 요소 추가.
 ```java
     /**
      * List의 시작 부분에 지정된 요소 추가.
@@ -225,7 +225,7 @@ listSize++;
 **3. 헤드를 새 노드로 지정 = 새 노드를 첫 번째 순서로 한다**<br>
 **4. list의 size를 늘려준다**<br>
 
-## void add(int index, Object data): List의 지정된 위치에 지정된 요소 추가
+## :large_blue_circle: void add(int index, Object data): List의 지정된 위치에 지정된 요소 추가
 ```java
     /**
      * List의 지정된 위치에 지정된 요소 추가
@@ -270,6 +270,15 @@ if(index > listSize) {
 <br>
 
 ### [새로운 노드를 원하는 위치에 추가하는 로직]
+```java
+Node previousTempNode = get(index-1);
+Node tempNode = get(index);
+Node newNode = new Node(data);
+
+newNode.next = tempNode;
+previousTempNode.next = newNode;
+listSize++;
+```
 **1. 추가할 위치의 이전 Node를 불러온다**<br>
 **2. 추가할 위치에 있는 Node를 불러온다**<br>
 **3. 새로운 Node 생성(= 새로 추가할 Node)**<br>
@@ -277,7 +286,7 @@ if(index > listSize) {
 **5. 추가할 위치의 이전 Node.next는 새로운 Node**<br>
 **6. list의 size를 늘려준다**<br>
 
-## Object removeFirst(): List의 첫 번째 요소를 제거 후 반환
+## :large_blue_circle: Object removeFirst(): List의 첫 번째 요소를 제거 후 반환
 ```java
     /**
      * List의 첫 번째 요소를 제거 후 반환
@@ -306,9 +315,9 @@ if(index > listSize) {
 &nbsp;&nbsp;&nbsp;&nbsp;- head.next를 첫 번째 Node로 지정함
 **5. list의 size를 늘려준다**<br>
 **6. tempNode에 저장헀던 head(삭제될 Node)의 data를 반환**<br>
-- 궁금증) tempNode값을 그대로 놔두면 메서드가 종료될 때 실제 저장공간에서 내려갈까? 그대로 남아 있을까?
+- :question:궁금증) tempNode값을 그대로 놔두면 메서드가 종료될 때 실제 저장공간에서 내려갈까? 그대로 남아 있을까?
 
-## Object removeLast(): List의 마지막 요소를 제거 후 반환
+## :large_blue_circle: Object removeLast(): List의 마지막 요소를 제거 후 반환
 ```java
     /**
      * List의 마지막 요소를 제거 후 반환
@@ -336,18 +345,38 @@ if(index > listSize) {
     }
 ```
 ### [list의 크기가 0 또는 1일 경우]
+```java
+if(listSize == 0) {
+    return null;
+}
+
+if(listSize == 1) {
+    Node nodeToBeDeleted = get(0);
+    head = null;
+    listSize--;
+    return nodeToBeDeleted.data;
+}
+```
 **1. list의 크기가 0이면 null 반환**<br>
 **2. list의 크기가 1이면 바로 첫 번째 Node의 data 반환**<br>
 <br>
 
 ### [list의 마지막 요소 반환 로직]
+```java
+Node tempNode = get(listSize-2);
+Node nodeToBeDeleted = tempNode.next;
+tempNode.next = null;
+listSize--;
+
+return nodeToBeDeleted.data;
+```
 **1. tempNode에 뒤에서 두 번째 Node를 저장**<br>
 **2. 삭제될 Node는 tempNode의 next(= 마지막 Node)**<br>
 **3. tempNode의 next를 null로 바꾼다(= 마지막 Node를 버린다)**<br>
 **4. listSize 감소**<br>
 **5. 제거된 Node(=마지막 Node였던 것)의 data를 반환**<br>
 
-## Object remove(int index): List에서 지정된 위치에 있는 요소를 제거 후 반환
+## :large_blue_circle: Object remove(int index): List에서 지정된 위치에 있는 요소를 제거 후 반환
 ```java
     /**
      * List에서 지정된 위치에 있는 요소를 제거 후 반환
@@ -373,11 +402,28 @@ if(index > listSize) {
     }
 ```
 ### [index 입력값 검증]
+```java
+if(index <= 0) {
+    return removeFirst();
+}
+
+if(index >= listSize) {
+    return removeLast();
+}
+```
 **1. index가 0보다 작거나 같으면 removeFirst()**<br>
 **2. index가 list의 크기보다 크거나 같으면 removeLast()**<br>
 <br>
 
 ### [원하는 위치의 요소를 제거하는 로직]
+```java
+Node tempNode = get(index-1);
+Node nodeToBeDeleted = tempNode.next;
+tempNode.next = tempNode.next.next;
+listSize--;
+
+return nodeToBeDeleted.data;
+```
 **1. tempNode에 저거할 요소 이전의 Node를 저장**<br>
 **2. 삭제될 노드는 tempNode의 next**<br>
 **3. tempNode의 next에 tempNode의 다다음 Node를 저장(= tempNode의 다음 Node를 버린다)**<br>
