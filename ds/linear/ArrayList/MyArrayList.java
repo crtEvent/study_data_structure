@@ -1,5 +1,7 @@
 package ds.linear.ArrayList;
 
+import java.util.Arrays;
+
 public class MyArrayList {
 
     private Object[] elementData;
@@ -13,7 +15,7 @@ public class MyArrayList {
         if(initialCapacity >= 0) {
             this.elementData = new Object[initialCapacity];
         } else {
-            throw new IllegalArgumentException("Illegal Capacity: "+
+            throw new IllegalArgumentException("[Error] Illegal Capacity: "+
                     initialCapacity);
         }
     }
@@ -80,7 +82,34 @@ public class MyArrayList {
      * @return 객체 저장 성공 여부
      */
     public boolean add(int index, Object element) {
-        return false;
+        rangeCheckForAdd(index);
+        if(elementData.length == listSize) {
+            growCapacity();
+        }
+        for(int i = listSize-1; i >= index; i--) {
+            elementData[i+1] = elementData[i];
+        }
+        elementData[index] = element;
+        listSize++;
+        return true;
+    }
+
+    /**
+     * ArrayList index 범위 체크.
+     * @param index 체크할 index
+     */
+    private void rangeCheckForAdd(int index) {
+        if (index < 0 || index > this.listSize)
+            throw new IndexOutOfBoundsException("Index: "+index+", Size: "+listSize);
+    }
+
+    /**
+     * ArrayList의 용량(capacity)에 +1
+     * @return 용량이 증가된 ArrayList
+     */
+    private Object[] growCapacity() {
+        elementData = Arrays.copyOf(elementData, listSize+1);
+        return elementData;
     }
 
     /**

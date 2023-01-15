@@ -97,6 +97,29 @@ Data Structures (자료 구조)
 |void trimSize()|용량을 크기에 맞게 줄인다 (빈 공간을 없앤다)|
 |void ensureCapacity(int minCapacity)|ArrayList의 용량이 최소한(minCapacity)가 되도록 한다|
 
+# :large_orange_diamond: 1. MyArrayList Class
+```java
+public class MyArrayList {
+
+    private Object[] elementData;
+    private int listSize = 0;
+
+    public MyArrayList() {
+        this.elementData = new Object[]{};
+    }
+
+    public MyArrayList(int initialCapacity) {
+        if (initialCapacity >= 0) {
+            this.elementData = new Object[initialCapacity];
+        } else {
+            throw new IllegalArgumentException("Illegal Capacity: " +
+                    initialCapacity);
+        }
+    }
+    // ...
+}
+```
+
 ## :sparkle: boolean add(Object element): ArrayList 마지막에 객체 저장. 성공하면 true 반환
 ```java
     /**
@@ -115,6 +138,77 @@ Data Structures (자료 구조)
   - listSize: 10, 배열의 마지막 index: 9
   - index 10에 새로운 요소를 저장하고 listSize++ 해준다
 
+## :sparkle: boolean add(int index, Object element): 지정된 위치(index)에 객체 저장
+```java
+    /**
+     * 지정된 위치(index)에 객체 저장
+     * @param index 저장할 위치
+     * @param element 저장할 객체
+     * @return 객체 저장 성공 여부
+     */
+    public boolean add(int index, Object element) {
+        rangeCheckForAdd(index);
+        if(elementData.length == listSize) {
+            growCapacity();
+        }
+        for(int i = listSize-1; i >= index; i--) {
+            elementData[i+1] = elementData[i];
+        }
+        elementData[index] = element;
+        listSize++;
+        return true;
+    }
+
+    /**
+     * ArrayList index 범위 체크.
+     * @param index 체크할 index
+     */
+    private void rangeCheckForAdd(int index) {
+        if (index < 0 || index > this.listSize)
+            throw new IndexOutOfBoundsException("Index: "+index+", Size: "+listSize);
+    }
+
+    /**
+     * ArrayList의 용량(capacity)에 +1
+     * @return 용량이 증가된 ArrayList
+     */
+    private Object[] growCapacity() {
+        elementData = Arrays.copyOf(elementData, listSize+1);
+        return elementData;
+    }
+```
+### 1. index 범위 체크
+```java
+    /**
+     * ArrayList index 범위 체크.
+     * @param index 체크할 index
+     */
+    private void rangeCheckForAdd(int index) {
+        if (index < 0 || index > this.listSize)
+            throw new IndexOutOfBoundsException("Index: "+index+", Size: "+listSize);
+    }
+```
+
+### 2. 배열 용량 체크 및 용량 증가
+```java
+    public boolean add(int index, Object element){
+        // ...
+        if(elementData.length==listSize){
+            growCapacity();
+        }
+        // ...
+    }
+    
+    /**
+     * ArrayList의 용량(capacity)에 +1
+     * @return 용량이 증가된 ArrayList
+     */
+    private Object[] growCapacity() {
+        elementData = Arrays.copyOf(elementData, listSize+1);
+        return elementData;
+    }
+```
+- Arrays.copyOf()로 기존 배열보다 크기가 1 더 크게 만들어 복사한다
 </details>
 
 # LinkedList
