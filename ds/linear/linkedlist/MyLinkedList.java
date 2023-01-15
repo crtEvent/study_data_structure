@@ -47,7 +47,7 @@ public class MyLinkedList {
      */
     public boolean isEmpty() {
 
-        return false;
+        return listSize == 0? true : false;
     }
 
     /**
@@ -55,7 +55,7 @@ public class MyLinkedList {
      * @return List에 저장된 객체의 개수
      */
     public int size() {
-        return 0;
+        return listSize;
     }
 
     /**

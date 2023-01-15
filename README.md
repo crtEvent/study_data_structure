@@ -59,6 +59,21 @@ Data Structures (자료 구조)
 <br>[kimkrh.log - 빅-오 표기법(Big-O Notation)](https://velog.io/@kimkrh/%EB%B9%85-%EC%98%A4-%ED%91%9C%EA%B8%B0%EB%B2%95Big-O-Notation)
 </details>
 
+# ArrayList
+<details>
+<summary> ArrayList 설명 </summary>
+
+- Object 배열을 이용해서 데이터를 순차적으로 저장
+- 배열에 공간이 부족하면 더 큰 배열을 새로 생성해서 기존의 배열에 저장된 내용을 새로운 배열로 복사한 다음에 객체를 추가한다
+- 장점) 데이터를 읽어오고 순차적으로 저장하는 데에 효율이 좋다
+- 단점) 데이터가 많을 수록 배열 중간에 데이터를 추가, 삭제할 때 작업시간 ↑
+</details>
+
+<details>
+<summary> ArrayList 코드 </summary>
+
+</details>
+
 # LinkedList
 <details>
 <summary> LinkedList 설명 </summary>
@@ -92,6 +107,21 @@ Data Structures (자료 구조)
 
 <details>
 <summary> LinkedList 코드 </summary>
+
+| 메서드                              |설명|
+|----------------------------------|---|
+| Node get(int index)              |List에서 지정된 위치에 있는 Node를 반환|
+| int indexOf(Object data)         |지정된 객체가 저장된 첫 번째 위치를 반환|
+| boolean isEmpty()                |List가 비어있는지 확인|
+| int size()                       |List에 저장된 객체의 개수 반환|
+| addFirst(Object data)            |List의 시작 부분에 지정된 요소 추가|
+| void addLast(Object data)        |List의 끝 부분에 지정된 요소 추가|
+| void add(int index, Object data) |List의 지정된 위치에 지정된 요소 추가|
+| Object removeFirst()             |List의 첫 번째 요소를 제거 후 반환|
+|Object removeLast()|List의 마지막 요소를 제거 후 반환|
+|Object remove(int index)|List에서 지정된 위치에 있는 요소를 제거 후 반환|
+| boolean remove(Object data)|지정된 요소가 List에 있는 경우 List에서 첫 번째 지정된 요소 제거|
+|toString()|list의 모든 요소들을 문자열로 반환|
 
 # :large_orange_diamond: 1. MyLinkedList Class & Node Class
 ```java
