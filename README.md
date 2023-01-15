@@ -67,11 +67,34 @@ Data Structures (자료 구조)
 - 배열에 공간이 부족하면 더 큰 배열을 새로 생성해서 기존의 배열에 저장된 내용을 새로운 배열로 복사한 다음에 객체를 추가한다
 - 장점) 데이터를 읽어오고 순차적으로 저장하는 데에 효율이 좋다
 - 단점) 데이터가 많을 수록 배열 중간에 데이터를 추가, 삭제할 때 작업시간 ↑
+
+### :question: 크기(size)와 용량(capacity)
+- 크기(size): 배열이 포함하고 있는 요소의 개수
+- 용량(capacity): 배열의 전체 크기
+
+## ArrayList 데이터 추가
+
+## ArrayList 데이터 삭제
+
 </details>
 
 <details>
 <summary> ArrayList 코드 </summary>
 
+| 메서드                              | 설명                                 |
+|----------------------------------|------------------------------------|
+|int size()| ArrayList에 저장된 객체의 개수 반환           |
+|boolean isEmpty()| ArrayList가 비어있는지 확인                |
+|int indexOf(Object element)| 지정된 객체가 저장된 위치를 찾아 반환              |
+|int lastIndexOf(Object element)| 객체가 저장된 위치를 끝부터 역방향으로 검색해서 반환      |
+|boolean contains(Object element)| 지정된 객체가 ArrayList에 있는지 확인          |
+|boolean add(Object element)| ArrayList 마지막에 객체 저장. 성공하면 true 반환 |
+|boolean add(int index, Object element)| 지정된 위치(index)에 객체 저장               |
+|Object get(int index)| 지정된 위치(index)에 저장된 객체 반환           |
+|Object remove(int index)| 지정된 위치(index)에 있는 객체를 제거. 제거된 객체를 반환         |
+|boolean remove(Object element)| 지정한 객체를 제거. 성공하면 true 반환           |
+|void trimSize()|용량을 크기에 맞게 줄인다 (빈 공간을 없앤다)|
+|void ensureCapacity(int minCapacity)|ArrayList의 용량이 최소한(minCapacity)가 되도록 한다|
 </details>
 
 # LinkedList
