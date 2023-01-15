@@ -1,6 +1,7 @@
 # study_data_structure
 자료 구조 구현해보기
 ## 목차
+- [ArrayList](#ArrayList)
 - [LinkedList](#LinkedList)
 
 ### 자료구조

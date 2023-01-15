@@ -23,7 +23,7 @@ public class MyArrayList {
      * @return
      */
     public int size() {
-        return 0;
+        return listSize;
     }
 
     /**
@@ -31,7 +31,7 @@ public class MyArrayList {
      * @return 비어있으면 true 반환
      */
     public boolean isEmpty() {
-        return false;
+        return listSize == 0;
     }
 
     /**

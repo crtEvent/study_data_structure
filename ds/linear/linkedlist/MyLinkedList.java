@@ -47,7 +47,7 @@ public class MyLinkedList {
      */
     public boolean isEmpty() {
 
-        return listSize == 0? true : false;
+        return listSize == 0;
     }
 
     /**
