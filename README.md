@@ -96,6 +96,25 @@ Data Structures (자료 구조)
 |boolean remove(Object element)| 지정한 객체를 제거. 성공하면 true 반환           |
 |void trimSize()|용량을 크기에 맞게 줄인다 (빈 공간을 없앤다)|
 |void ensureCapacity(int minCapacity)|ArrayList의 용량이 최소한(minCapacity)가 되도록 한다|
+
+## :sparkle: boolean add(Object element): ArrayList 마지막에 객체 저장. 성공하면 true 반환
+```java
+    /**
+     * ArrayList 마지막에 객체 저장. 성공하면 true 반환
+     * @param element 저장할 객체
+     * @return 객체 저장 성공 여부
+     */
+    public boolean add(Object element) {
+        elementData[listSize] = element;
+        listSize++;
+
+        return true;
+    }
+```
+- 현재 배열에 10개의 요소가 들어 있다면
+  - listSize: 10, 배열의 마지막 index: 9
+  - index 10에 새로운 요소를 저장하고 listSize++ 해준다
+
 </details>
 
 # LinkedList

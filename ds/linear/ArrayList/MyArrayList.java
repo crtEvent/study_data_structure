@@ -67,7 +67,10 @@ public class MyArrayList {
      * @return 객체 저장 성공 여부
      */
     public boolean add(Object element) {
-        return false;
+        elementData[listSize] = element;
+        listSize++;
+
+        return true;
     }
 
     /**
@@ -121,5 +124,15 @@ public class MyArrayList {
      */
     public void ensureCapacity(int minCapacity) {
 
+    }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for(int i = 0; i < listSize-1; i++) {
+            sb.append(elementData[i]).append(", ");
+        }
+        sb.append(elementData[listSize-1]).append("]");
+        return sb.toString();
     }
 }
