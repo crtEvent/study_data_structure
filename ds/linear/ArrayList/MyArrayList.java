@@ -128,7 +128,15 @@ public class MyArrayList {
      * @return 제거된 객체
      */
     public Object remove(int index) {
-        return null;
+        rangeCheckForAdd(index);
+
+        Object oldValue = elementData[index];
+
+        System.arraycopy(elementData, index + 1, elementData, index , listSize - index - 1);
+        listSize--;
+
+        elementData[listSize] = null;
+        return oldValue;
     }
 
     /**
@@ -137,6 +145,14 @@ public class MyArrayList {
      * @return 제거 성공 여부
      */
     public boolean remove(Object element) {
+
+        for(int i = 0; i < listSize; i++) {
+            if(elementData[i].equals(element)) {
+                remove(i);
+                return true;
+            }
+        }
+
         return false;
     }
 
