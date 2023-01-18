@@ -1,8 +1,8 @@
 # study_data_structure
 자료 구조 구현해보기
 ## 목차
-- [ArrayList](ds/linear/ArrayList/README.md)
-- [LinkedList](ds/linear/linkedlist/README.md)
+- [ArrayList](ds/linear/ArrayList)
+- [LinkedList](ds/linear/linkedlist)
 
 ## 자료구조
 - 데이터를 효율적으로 다룰 수 있게 도와주는 데이터 보관 방법과 데이터에 관한 연산
