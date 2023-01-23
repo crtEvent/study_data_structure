@@ -1,24 +1,8 @@
 package ds.linear.ArrayList;
 
 import org.junit.jupiter.api.*;
-
-import java.util.ArrayList;
-import java.util.Vector;
-
 public class MyArrayListTest {
     static MyArrayList list;
-
-    @Test
-    public void test() {
-        Vector v = new Vector(5);
-        v.add("1");
-        v.add("2");
-        v.add("3");
-        System.out.println(System.identityHashCode(v));
-
-        v.trimToSize();
-        System.out.println(System.identityHashCode(v));
-    }
 
     @Nested
     class Test_01 {
