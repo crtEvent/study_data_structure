@@ -199,14 +199,6 @@ public class MyArrayList {
         }
     }
 
-    /**
-     * ArrayList의 용량이 최소한(minCapacity)가 되도록 한다
-     * @param minCapacity 설정할 최소 용량
-     */
-    public void ensureCapacity(int minCapacity) {
-
-    }
-
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("[");
