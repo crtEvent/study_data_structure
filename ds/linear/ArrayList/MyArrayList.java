@@ -189,8 +189,14 @@ public class MyArrayList {
     /**
      * 용량을 크기에 맞게 줄인다 (빈 공간을 없앤다)
      */
-    public void trimSize() {
-
+    public void trimToSize() {
+        if (listSize < elementData.length) {
+            if (listSize == 0) {
+                elementData = new Object[]{};
+                return;
+            }
+            elementData = Arrays.copyOf(elementData, listSize);
+        }
     }
 
     /**
