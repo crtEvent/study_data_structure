@@ -6,9 +6,10 @@ public class MyArrayList {
 
     private Object[] elementData;
     private int listSize = 0;
+    private static final int DEFAULT_CAPACITY = 10;
 
     public MyArrayList() {
-        this.elementData = new Object[]{};
+        this(DEFAULT_CAPACITY);
     }
 
     public MyArrayList(int initialCapacity) {
