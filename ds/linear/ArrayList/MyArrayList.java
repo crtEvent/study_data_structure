@@ -145,7 +145,10 @@ public class MyArrayList {
      * @return 지정된 위치(index)에 저장된 객체
      */
     public Object get(int index) {
-        return null;
+        if(index < 0 || index >= listSize) {
+            throw new IndexOutOfBoundsException("Index: "+index+", Size: "+listSize);
+        }
+        return elementData[index];
     }
 
     /**

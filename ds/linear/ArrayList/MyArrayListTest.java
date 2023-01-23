@@ -88,5 +88,17 @@ public class MyArrayListTest {
             index = list2.indexOf(null);
             Assertions.assertEquals(1, index);
         }
+
+        @Test
+        public void testGet() {
+            for(int i = 0; i < list.size(); i++) {
+                Assertions.assertEquals(i+1, list.get(i));
+            }
+
+            exception = Assertions.assertThrows(IndexOutOfBoundsException.class, () -> {
+                list.get(7);
+            });
+            System.out.println(exception);
+        }
     }
 }
