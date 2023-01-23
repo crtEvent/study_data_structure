@@ -91,6 +91,12 @@ public class MyArrayListTest {
             index = list.indexOf(5);
             Assertions.assertEquals(4, index);
 
+            index = list.lastIndexOf(null);
+            Assertions.assertEquals(-1, index);
+
+            index = list.lastIndexOf(5);
+            Assertions.assertEquals(4, index);
+
             MyArrayList list2 = new MyArrayList(10);
             list2.add(1);
             list2.add(null);

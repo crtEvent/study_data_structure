@@ -65,7 +65,20 @@ public class MyArrayList {
      * @return 객체가 저장된 위치
      */
     public int lastIndexOf(Object element) {
-        return 0;
+        if(element == null) {
+            for(int i = listSize - 1; i >= 0; i--) {
+                if(elementData[i] == null) {
+                    return  i;
+                }
+            }
+        } else {
+            for (int i = listSize - 1; i >= 0; i--) {
+                if (elementData[i].equals(element)) {
+                    return i;
+                }
+            }
+        }
+        return -1;
     }
 
     /**
