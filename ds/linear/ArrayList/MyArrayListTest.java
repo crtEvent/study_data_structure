@@ -81,5 +81,22 @@ public class MyArrayListTest {
             // 없는 값을 제거하려고 할 경우
             Assertions.assertTrue(!list.remove(new Integer(0)));
         }
+        @Test
+        public void testIndexOf() {
+            int index;
+
+            index = list.indexOf(null);
+            Assertions.assertEquals(-1, index);
+
+            index = list.indexOf(5);
+            Assertions.assertEquals(4, index);
+
+            MyArrayList list2 = new MyArrayList(10);
+            list2.add(1);
+            list2.add(null);
+            list2.add(2);
+            index = list2.indexOf(null);
+            Assertions.assertEquals(1, index);
+        }
     }
 }
