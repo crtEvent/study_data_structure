@@ -87,7 +87,7 @@ public class MyArrayList {
      * @return 객체가 존재하는지 여부
      */
     public boolean contains(Object element) {
-        return false;
+        return indexOf(element) >= 0;
     }
 
     /**
