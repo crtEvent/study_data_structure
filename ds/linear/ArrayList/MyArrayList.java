@@ -42,7 +42,20 @@ public class MyArrayList {
      * @return 객체가 저장된 위치
      */
     public int indexOf(Object element) {
-        return 0;
+        if(element == null) {
+            for(int i = 0; i < listSize; i++) {
+                if(elementData[i] == null) {
+                    return  i;
+                }
+            }
+        } else {
+            for (int i = 0; i < listSize; i++) {
+                if (elementData[i].equals(element)) {
+                    return i;
+                }
+            }
+        }
+        return -1;
     }
 
     /**
