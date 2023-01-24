@@ -1,4 +1,4 @@
-package ds.linear.ArrayList;
+package ds.linear.arraylist;
 
 import org.junit.jupiter.api.*;
 public class MyArrayListTest {

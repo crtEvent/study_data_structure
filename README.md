@@ -1,8 +1,10 @@
 # study_data_structure
-자료 구조 구현해보기
+자료 구조 구현해보기 with JAVA 11
+
 ## 목차
-- [ArrayList](ds/linear/ArrayList)
-- [LinkedList](ds/linear/linkedlist)
+- Linear Data Structures (선형 자료 구조)
+  - [Array List (순차 리스트)](ds/linear/arraylist)
+  - [Linked List (연결 리스트)](ds/linear/linkedlist)
 
 ## 자료구조
 - 데이터를 효율적으로 다룰 수 있게 도와주는 데이터 보관 방법과 데이터에 관한 연산

@@ -1,4 +1,4 @@
-package ds.linear.ArrayList;
+package ds.linear.arraylist;
 
 import java.util.Arrays;
 
