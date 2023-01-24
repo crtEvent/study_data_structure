@@ -5,6 +5,9 @@
 - Linear Data Structures (선형 자료 구조)
   - [Array List (순차 리스트)](ds/linear/arraylist)
   - [Linked List (연결 리스트)](ds/linear/linkedlist)
+- Non-Linear Data Structures (비선형 자료 구조)
+  - Tree (트리)
+    - [Binary Tree (이진트리)](ds/non_linear/tree/binarytree)
 
 ## 자료구조
 - 데이터를 효율적으로 다룰 수 있게 도와주는 데이터 보관 방법과 데이터에 관한 연산
