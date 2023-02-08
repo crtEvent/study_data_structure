@@ -10,6 +10,10 @@ public class MyBinaryTree {
         TreeNode leftNode;
         TreeNode rightNode;
 
+        public TreeNode(Object data) {
+            this(data, null, null);
+        }
+
         public TreeNode(Object data, TreeNode leftNode, TreeNode rightNode) {
             this.data = data;
             this.leftNode = leftNode;
