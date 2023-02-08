@@ -8,13 +8,18 @@
   + [Binary Tree 특징](#binary-tree-특징)
   + [Binary Tree 종류](#binary-tree-종류)
 * [Binary Tree 구현 방법](#binary-tree-구현-방법)
-  + [1. 순차 자료구조(배열)을 이용한 방법](#순차-자료구조배열을-이용한-방법)
-  + [2. 연결 자료구조를 이용한 방법](#연결-자료구조를-이용한-방법)
+  + [1. 순차 자료구조(배열)을 이용한 방법](#1-순차-자료구조배열을-이용한-방법)
+  + [2. 연결 자료구조를 이용한 방법](#2-연결-자료구조를-이용한-방법)
 * [Binary Tree 순회 방법](#binary-tree-순회-방법)
   + [전위 순회(Preorder Traversal)](#전위-순회preorder-traversal)
   + [중위 순회(Inorder Traversal)](#중위-순회inorder-traversal)
   + [후위 순회(Postorder Traversal)](#후위-순회postorder-traversal)
 - [구현](#구현)
+  + [✳️ TreeNode 구조](#%EF%B8%8F-treenode-구조)
+  + [✳️ TreeNode 데이터, Tree 구조 생성](#%EF%B8%8F-treenode-데이터-tree-구조-생성)
+  + [✳️ 전위 순회(Preorder Traversal)](#%EF%B8%8F-전위-순회preorder-traversal)
+  + [✳️ 중위 순회(Inorder Traversal)](#%EF%B8%8F-중위-순회inorder-traversal)
+  + [✳️ 후위 순회(Postorder Traversal)](#%EF%B8%8F-후위-순회postorder-traversal)
 ---
 
 ## Tree
@@ -208,7 +213,7 @@ public class MyBinaryTreeTest {
     }
 ```
 
-## ️✳️ 중위 순회(Inorder Traversal)
+## ✳️ 중위 순회(Inorder Traversal)
 ```java
     /**
      * 중위 순회(Inorder Traversal)
