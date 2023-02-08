@@ -1,5 +1,27 @@
 # Binary Tree
 
+## 목차
+* [Tree](#tree)
+  + [Tree의 특징](#tree의-특징)
+  + [Tree 구조](#tree-구조)
+* [Binary Tree](#binary-tree)
+  + [Binary Tree 특징](#binary-tree-특징)
+  + [Binary Tree 종류](#binary-tree-종류)
+* [Binary Tree 구현 방법](#binary-tree-구현-방법)
+  + [1. 순차 자료구조(배열)을 이용한 방법](#순차-자료구조배열을-이용한-방법)
+  + [2. 연결 자료구조를 이용한 방법](#연결-자료구조를-이용한-방법)
+* [Binary Tree 순회 방법](#binary-tree-순회-방법)
+  + [전위 순회(Preorder Traversal)](#전위-순회preorder-traversal)
+  + [중위 순회(Inorder Traversal)](#중위-순회inorder-traversal)
+  + [후위 순회(Postorder Traversal)](#후위-순회postorder-traversal)
+- [구현](#구현)
+  * [✳️ TreeNode 구조](#✳️-treenode-구조)
+  * [✳️ TreeNode 데이터, Tree 구조 생성](#✳️-treenode-데이터-tree-구조-생성)
+  * [✳️ 전위 순회(Preorder Traversal)](#✳️-전위-순회preorder-traversal)
+  * [✳️ 중위 순회(Inorder Traversal)](#✳️-중위-순회inorder-traversal)
+  * [✳️ 후위 순회(Postorder Traversal)](#✳️-후위-순회postorder-traversal)
+---
+
 ## Tree
 - 자료들 간에 계층관계를 가진 자료구조
 
@@ -41,9 +63,9 @@
   - 모든 Level에 노드가 다 차있는 상태
   - 높이가 h일 때 최대 노드 수 $(2^{h+1}-1)$를 가지는 상태
   - 왼쪽에서 오른쪽으로 차례대로 번호를 붙인다
-- 완전 이진 트리(Complete Binary Tree
+- 완전 이진 트리(Complete Binary Tree)
   - 1번 부터 n번 까지의 노드 위치가 포화 이진 트리와 모두 일치하는 상태
-- 편향 이진 트리9Skewed Binary Tree)
+- 편향 이진 트리(Skewed Binary Tree)
   - 최소 개수의 노드 $(h+1)$를 가지고 있는 상태(왼쪽, 오른쪽 중 한 쪽으로만 서브트리를 가지고 있다)
 
 ## Binary Tree 구현 방법
@@ -69,7 +91,202 @@
 - 위의 문제 때문에 연결 자료구조를 사용한다
 
 ## Binary Tree 순회 방법
+- 순회(traversal): 트리에 있는 모든 노드를 한번씩 방문하는 것
+  - 트리는 계층형 자료구조라 여러 순회 방법이 존재한다
+```text
+ [Tree Structure]
+       (A)
+      /   \
+   (B)     (C)
+   /  \    /  \
+  (D) (E) (F) (G)
+  
+[Preorder Traversal - DLR]
+A > B > D > E > C > F > G 
+ 
+[Inorder Traversal - LDR]
+D > B > E > A > F > C > G
 
+[Postorder Traversal - LRD]
+D > E > B > F > G > C > A
+```
+### 전위 순회(Preorder Traversal)
+- `현재 노드(D)` -> `왼쪽 노드(L)` -> `오른쪽 노드(R)` 순으로 순회
+
+### 중위 순회(Inorder Traversal)
+- `왼쪽 노드(L)` -> `현재 노드(D)` -> `오른쪽 노드(R)` 순으로 순회
+
+### 후위 순회(Postorder Traversal)
+- `왼쪽 노드(L)` -> `오른쪽 노드(R)` -> `현재 노드(D)` 순으로 순회
 ---
 
 # 구현
+## ✳️ TreeNode 구조
+```java
+public class TreeNode {
+    Object data;
+    TreeNode leftNode;
+    TreeNode rightNode;
+}
+```
+
+## ✳️ TreeNode 데이터, Tree 구조 생성
+```java
+    /**
+     * 서브 바이나리 트리 생성
+     * @param left 왼쪽 자식 노드
+     * @param data 데이터
+     * @param right 오른쪽 자식 노드
+     * @return
+     */
+    public TreeNode makeSubBinaryTree(TreeNode left, Object data, TreeNode right) {
+        TreeNode root = new TreeNode(data);
+        root.leftNode = left;
+        root.rightNode = right;
+
+        return root;
+    }
+```
+```java
+public class MyBinaryTreeTest {
+
+    MyBinaryTree tree;
+    MyBinaryTree.TreeNode root;
+
+    @BeforeEach
+    public void makeBinaryTree() {
+        /* [Tree Structure]
+         *      (A)
+         *     /   \
+         *  (B)     (C)
+         *  /  \    /  \
+         * (D) (E) (F) (G)
+         */
+        tree = new MyBinaryTree();
+        MyBinaryTree.TreeNode n7 = tree.makeSubBinaryTree(null, "G", null);
+        MyBinaryTree.TreeNode n6 = tree.makeSubBinaryTree(null, "F", null);
+        MyBinaryTree.TreeNode n5 = tree.makeSubBinaryTree(null, "E", null);
+        MyBinaryTree.TreeNode n4 = tree.makeSubBinaryTree(null, "D", null);
+        MyBinaryTree.TreeNode n3 = tree.makeSubBinaryTree(n6, "C", n7);
+        MyBinaryTree.TreeNode n2 = tree.makeSubBinaryTree(n4, "B", n5);
+        root = tree.makeSubBinaryTree(n2, "A", n3);
+    }
+}
+```
+
+## ✳️ 전위 순회(Preorder Traversal)
+```java
+    /**
+     * 전위 순회(Preorder Traversal)
+     * 현재 노드 -> 왼쪽 노드 -> 오른쪽 노드 순으로 순회
+     * @param rootNode 순회를 시작할 노드
+     * @return 순회한 순서대로 리스트에 담아 반환
+     */
+    public List<Object> preOrderTraversal(TreeNode rootNode) {
+        List<Object> dataGroup = new ArrayList<>(count);
+        if(rootNode != null) {
+            dataGroup.add(rootNode.data);
+            preOrderTraversal(rootNode.leftNode, dataGroup);
+            preOrderTraversal(rootNode.rightNode, dataGroup);
+        }
+
+        return dataGroup;
+    }
+
+    private void preOrderTraversal(TreeNode rootNode, List<Object> dataGroup) {
+        if(rootNode != null) {
+            dataGroup.add(rootNode.data);
+            preOrderTraversal(rootNode.leftNode, dataGroup);
+            preOrderTraversal(rootNode.rightNode, dataGroup);
+        }
+    }
+```
+```java
+    @Test
+    public void testPreOrder() {
+        List<Object> dataGroup = tree.preOrderTraversal(root);
+
+        dataGroup.stream()
+                .filter(Objects::nonNull)
+                .map(obj -> String.valueOf(obj))
+                .forEach(System.out::println);
+    }
+```
+
+## ️✳️ 중위 순회(Inorder Traversal)
+```java
+    /**
+     * 중위 순회(Inorder Traversal)
+     * 왼쪽 노드 -> 현재 노드 -> 오른쪽 노드 순으로 순회
+     * @param rootNode 순회를 시작할 노드
+     * @return 순회한 순서대로 리스트에 담아 반환
+     */
+    public List<Object> inOrderTraversal(TreeNode rootNode) {
+        List<Object> dataGroup = new ArrayList<>(count);
+        if(rootNode != null) {
+            inOrderTraversal(rootNode.leftNode, dataGroup);
+            dataGroup.add(rootNode.data);
+            inOrderTraversal(rootNode.rightNode, dataGroup);
+        }
+
+        return dataGroup;
+    }
+
+    private void inOrderTraversal(TreeNode rootNode, List<Object> dataGroup) {
+        if(rootNode != null) {
+            inOrderTraversal(rootNode.leftNode, dataGroup);
+            dataGroup.add(rootNode.data);
+            inOrderTraversal(rootNode.rightNode, dataGroup);
+        }
+    }
+```
+```java
+    @Test
+    public void testInOrder() {
+        List<Object> dataGroup = tree.inOrderTraversal(root);
+
+        dataGroup.stream()
+                .filter(Objects::nonNull)
+                .map(obj -> String.valueOf(obj))
+                .forEach(System.out::println);
+    }
+```
+
+## ✳️ 후위 순회(Postorder Traversal)
+```java
+    /**
+     * 후위 순회(Postorder Traversal)
+     * 왼쪽 노드 -> 오른쪽 노드 -> 현재 노드 순으로 순회
+     * @param rootNode 순회를 시작할 노드
+     * @return 순회한 순서대로 리스트에 담아 반환
+     */
+    public List<Object> postOrderTraversal(TreeNode rootNode) {
+        List<Object> dataGroup = new ArrayList<>(count);
+        if(rootNode != null) {
+            postOrderTraversal(rootNode.leftNode, dataGroup);
+            postOrderTraversal(rootNode.rightNode, dataGroup);
+            dataGroup.add(rootNode.data);
+        }
+
+        return dataGroup;
+    }
+
+    private void postOrderTraversal(TreeNode rootNode, List<Object> dataGroup) {
+        if(rootNode != null) {
+            postOrderTraversal(rootNode.leftNode, dataGroup);
+            postOrderTraversal(rootNode.rightNode, dataGroup);
+            dataGroup.add(rootNode.data);
+        }
+    }
+```
+```java
+    @Test
+    public void testPostOrder() {
+        List<Object> dataGroup = tree.postOrderTraversal(root);
+
+        dataGroup.stream()
+                .filter(Objects::nonNull)
+                .map(obj -> String.valueOf(obj))
+                .forEach(System.out::println);
+    }
+```
