@@ -42,8 +42,8 @@ public class MyBinaryTree {
     /**
      * 전위 순회(Preorder Traversal)
      * 현재 노드 -> 왼쪽 노드 -> 오른쪽 노드 순으로 순회
-     * @param rootNode
-     * @return
+     * @param rootNode 순회를 시작할 노드
+     * @return 순회한 순서대로 리스트에 담아 반환
      */
     public List<Object> preOrderTraversal(TreeNode rootNode) {
         List<Object> dataGroup = new ArrayList<>(count);
@@ -64,7 +64,30 @@ public class MyBinaryTree {
         }
     }
 
-    public void inOrder() {}
+    /**
+     * 중위 순회(Inorder Traversal)
+     * 왼쪽 노드 -> 현재 노드 -> 오른쪽 노드 순으로 순회
+     * @param rootNode 순회를 시작할 노드
+     * @return 순회한 순서대로 리스트에 담아 반환
+     */
+    public List<Object> inOrderTraversal(TreeNode rootNode) {
+        List<Object> dataGroup = new ArrayList<>(count);
+        if(rootNode != null) {
+            inOrderTraversal(rootNode.leftNode, dataGroup);
+            dataGroup.add(rootNode.data);
+            inOrderTraversal(rootNode.rightNode, dataGroup);
+        }
+
+        return dataGroup;
+    }
+
+    private void inOrderTraversal(TreeNode rootNode, List<Object> dataGroup) {
+        if(rootNode != null) {
+            inOrderTraversal(rootNode.leftNode, dataGroup);
+            dataGroup.add(rootNode.data);
+            inOrderTraversal(rootNode.rightNode, dataGroup);
+        }
+    }
 
     public void postOrder() {}
 

@@ -20,13 +20,6 @@ public class MyBinaryTreeTest {
          *  /  \    /  \
          * (D) (E) (F) (G)
          */
-        /* [Tree Structure]
-         *      (1)
-         *     /   \
-         *  (2)     (3)
-         *  /  \    /  \
-         * (4) (5) (6) (7)
-         */
         tree = new MyBinaryTree();
         MyBinaryTree.TreeNode n7 = tree.makeSubBinaryTree(null, "G", null);
         MyBinaryTree.TreeNode n6 = tree.makeSubBinaryTree(null, "F", null);
@@ -40,6 +33,16 @@ public class MyBinaryTreeTest {
     @Test
     public void testPreOrder() {
         List<Object> dataGroup = tree.preOrderTraversal(root);
+
+        dataGroup.stream()
+                .filter(Objects::nonNull)
+                .map(obj -> String.valueOf(obj))
+                .forEach(System.out::println);
+    }
+
+    @Test
+    public void testInOrder() {
+        List<Object> dataGroup = tree.inOrderTraversal(root);
 
         dataGroup.stream()
                 .filter(Objects::nonNull)
