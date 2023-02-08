@@ -21,8 +21,12 @@ public class MyBinaryTree {
         }
     }
 
-    public void makeBinaryTree() {
+    public TreeNode makeSubBinaryTree(TreeNode left, Object data, TreeNode right) {
+        TreeNode root = new TreeNode(data);
+        root.leftNode = left;
+        root.rightNode = right;
 
+        return root;
     }
 
     public void addLeft() {
