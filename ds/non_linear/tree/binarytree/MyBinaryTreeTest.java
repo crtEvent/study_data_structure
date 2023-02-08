@@ -49,4 +49,14 @@ public class MyBinaryTreeTest {
                 .map(obj -> String.valueOf(obj))
                 .forEach(System.out::println);
     }
+
+    @Test
+    public void testPostOrder() {
+        List<Object> dataGroup = tree.postOrderTraversal(root);
+
+        dataGroup.stream()
+                .filter(Objects::nonNull)
+                .map(obj -> String.valueOf(obj))
+                .forEach(System.out::println);
+    }
 }

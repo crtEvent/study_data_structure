@@ -89,7 +89,30 @@ public class MyBinaryTree {
         }
     }
 
-    public void postOrder() {}
+    /**
+     * 후위 순회(Postorder Traversal)
+     * 왼쪽 노드 -> 오른쪽 노드 -> 현재 노드 순으로 순회
+     * @param rootNode 순회를 시작할 노드
+     * @return 순회한 순서대로 리스트에 담아 반환
+     */
+    public List<Object> postOrderTraversal(TreeNode rootNode) {
+        List<Object> dataGroup = new ArrayList<>(count);
+        if(rootNode != null) {
+            postOrderTraversal(rootNode.leftNode, dataGroup);
+            postOrderTraversal(rootNode.rightNode, dataGroup);
+            dataGroup.add(rootNode.data);
+        }
+
+        return dataGroup;
+    }
+
+    private void postOrderTraversal(TreeNode rootNode, List<Object> dataGroup) {
+        if(rootNode != null) {
+            postOrderTraversal(rootNode.leftNode, dataGroup);
+            postOrderTraversal(rootNode.rightNode, dataGroup);
+            dataGroup.add(rootNode.data);
+        }
+    }
 
 
 
