@@ -15,11 +15,6 @@
   + [중위 순회(Inorder Traversal)](#중위-순회inorder-traversal)
   + [후위 순회(Postorder Traversal)](#후위-순회postorder-traversal)
 - [구현](#구현)
-  * [✳️ TreeNode 구조](#✳-treenode-구조)
-  * [✳️ TreeNode 데이터, Tree 구조 생성](#✳️treenode-데이터-tree-구조-생성)
-  * [✳️ 전위 순회(Preorder Traversal)](#✳️전위-순회preorder-traversal)
-  * [✳️ 중위 순회(Inorder Traversal)](#✳️중위-순회inorder-traversal)
-  * [✳️ 후위 순회(Postorder Traversal)](#✳️후위-순회postorder-traversal)
 ---
 
 ## Tree
