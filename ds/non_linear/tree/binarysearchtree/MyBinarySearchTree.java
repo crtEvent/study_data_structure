@@ -22,6 +22,21 @@ public class MyBinarySearchTree {
         }
     }
 
+    public BST_Node search(int key) {
+        BST_Node tempNode = rootNode;
+        while (tempNode != null) {
+            if(key < tempNode.key) {
+                tempNode = tempNode.leftNode;
+            } else if(key > tempNode.key) {
+                tempNode = tempNode.rightNode;
+            } else {
+                return tempNode;
+            }
+        } // end - while()
+
+        return null;
+    }
+
     private BST_Node insert(BST_Node root, int key, Object data) {
         BST_Node newNode = new BST_Node(key, data);
 

@@ -1,13 +1,14 @@
 package ds.non_linear.tree.binarysearchtree;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class MyBinarySearchTreeTest {
 
     MyBinarySearchTree bst = new MyBinarySearchTree();
 
-    @Test
-    public void testInsert() {
+    @BeforeEach
+    public void init() {
         bst.insert(7, "G");
         bst.insert(9, "I");
         bst.insert(8, "H");
@@ -19,8 +20,19 @@ public class MyBinarySearchTreeTest {
         bst.insert(10, "J");
         bst.insert(5, "E");
         bst.insert(17, "Q");
+    }
 
-
+    @Test
+    public void testInsert() {
         bst.printInOrder();
     }
+
+    @Test
+    public void testSearch() {
+        MyBinarySearchTree.BST_Node search;
+        search = bst.search(10);
+        System.out.println(search.key + " : " + search.data);
+    }
+
+
 }
