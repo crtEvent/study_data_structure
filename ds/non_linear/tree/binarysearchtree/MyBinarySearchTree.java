@@ -41,4 +41,16 @@ public class MyBinarySearchTree {
     public void insert(int key, Object data) {
         root = insert(root, key, data);
     }
+
+    private void printPreOrder(BST_Node root) {
+        if(root != null) {
+            printPreOrder(root.leftNode);
+            System.out.printf("%d : %s%n", root.key, root.data);
+            printPreOrder(root.rightNode);
+        }
+    }
+
+    public void printPreOrder() {
+        printPreOrder(root);
+    }
 }
