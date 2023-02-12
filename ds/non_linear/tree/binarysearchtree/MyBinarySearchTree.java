@@ -2,7 +2,7 @@ package ds.non_linear.tree.binarysearchtree;
 
 public class MyBinarySearchTree {
 
-    private BST_Node root;
+    private BST_Node rootNode;
 
     public class BST_Node {
         int key;
@@ -33,24 +33,29 @@ public class MyBinarySearchTree {
         } else if(newNode.key > root.key) {
             root.rightNode = insert(root.rightNode, key, data);
             return root;
+        } else {
+            return root;
         }
 
-        return root;
     }
 
     public void insert(int key, Object data) {
-        root = insert(root, key, data);
+        rootNode = insert(rootNode, key, data);
     }
 
-    private void printPreOrder(BST_Node root) {
+    private void printInOrder(BST_Node root) {
         if(root != null) {
-            printPreOrder(root.leftNode);
-            System.out.printf("%d : %s%n", root.key, root.data);
-            printPreOrder(root.rightNode);
+            printInOrder(root.leftNode);
+            System.out.printf("[%d]-[%d:%s]-[%d]%n"
+                    , (root.leftNode != null)? root.leftNode.key : 0
+                    , root.key
+                    , root.data
+                    ,(root.rightNode != null)? root.rightNode.key : 0);
+            printInOrder(root.rightNode);
         }
     }
 
-    public void printPreOrder() {
-        printPreOrder(root);
+    public void printInOrder() {
+        printInOrder(rootNode);
     }
 }
